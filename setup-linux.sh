@@ -15,7 +15,7 @@ sudo apt update
 sudo apt install -y stow git neovim nodejs gcc g++ make yarn ruby ruby-dev \
   python3-pip apt-transport-https ca-certificates curl gnupg-agent \
   software-properties-common docker-ce docker-ce-cli containerd.io \
-  golang go-md2man latexmk
+  golang go-md2man latexmk stow neovim
 
 sudo gem install neovim
 yarn global add neovim
@@ -23,6 +23,10 @@ pip3 install neovim-remote
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $HOME/.zshrc
+
+mkdir -p $HOME/.config/nvim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 stow zsh
 stow nvim
